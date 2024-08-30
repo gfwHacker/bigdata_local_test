@@ -1,0 +1,42 @@
+{
+  "person_id": 1,
+  "name": "张三",
+  "age": 30,
+  "address": {
+    "street": "中山路123号",
+    "city": "上海",
+    "state": "上海",
+    "zip": "200000",
+    "country": "中国"
+  },
+  "contact": {
+    "email": "zhangsan@example.com",
+    "phone": "+86 138 1234 5678",
+    "social_media": {
+      "facebook": "https://www.facebook.com/zhangsan",
+      "twitter": "https://twitter.com/zhangsan",
+      "linkedin": "https://www.linkedin.com/in/zhangsan"
+    }
+  },
+  "education": {
+    "degree": "学士",
+    "major": "计算机科学",
+    "university": "某某大学",
+    "graduation_year": 2015
+  },
+  "work_experience": {
+    "company": "某某公司",
+    "position": "软件工程师",
+    "start_date": "2015-06-01",
+    "end_date": "2022-01-31",
+    "responsibilities": [
+      "为产品X开发新功能",
+      "优化后端系统性能",
+      "与跨职能团队合作"
+    ]
+  },
+  "skills": {
+    "programming_languages": ["Java", "Apache Flink"],
+    "technologies": ["沟通能力", "解决问题", "团队合作"]
+  }
+}

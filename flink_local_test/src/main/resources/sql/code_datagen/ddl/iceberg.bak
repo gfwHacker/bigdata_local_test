@@ -1,0 +1,17 @@
+-- 创建iceberg表(未使用，使用时末尾加分号)
+DROP TABLE IF EXISTS iceberg.iceberg.code_datagen_customer_iceberg;
+CREATE TABLE IF NOT EXISTS iceberg.iceberg.code_datagen_customer_iceberg
+    LIKE hive.hive.code_datagen_customer_hive (EXCLUDING ALL);
+
+-- 创建flink表(未使用，使用时末尾加分号)
+DROP TABLE IF EXISTS hive.flink.code_datagen_customer_flink;
+CREATE TABLE IF NOT EXISTS hive.flink.code_datagen_customer_flink
+    WITH (
+       'connector'='iceberg',
+       'catalog-type'='hive',
+       'catalog-name'='iceberg',
+       'catalog-database'='iceberg',
+       'catalog-table'='datagen_sink_customer_iceberg',
+       'uri'='thrift://master:9083',
+       'warehouse'='hdfs://master:9000/iceberg/warehouse')
+    LIKE hive.hive.code_datagen_customer_hive (EXCLUDING ALL);

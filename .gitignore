@@ -1,0 +1,8 @@
+/.idea/
+
+/flink_local_test/logs/
+/flink_local_test/target/
+
+/spark_local_test/target/
+/spark_local_test/local_data/
+/spark_local_test/logs/
