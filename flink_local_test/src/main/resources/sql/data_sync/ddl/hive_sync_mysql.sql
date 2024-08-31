@@ -1,4 +1,3 @@
--- flink端执行语句
 DROP TABLE IF EXISTS hive.flink.rn_ufw_log_mysql;
 CREATE TABLE hive.flink.rn_ufw_log_mysql (
     `ufw_minutes` STRING COMMENT '日志的时间戳',

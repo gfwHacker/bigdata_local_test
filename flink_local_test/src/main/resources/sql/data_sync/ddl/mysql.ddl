@@ -1,4 +1,3 @@
--- mysql端执行语句
 CREATE DATABASE IF NOT EXISTS hive_sync;
 DROP TABLE IF EXISTS hive_sync.rn_ufw_log_mysql;
 CREATE TABLE hive_sync.rn_ufw_log_mysql (

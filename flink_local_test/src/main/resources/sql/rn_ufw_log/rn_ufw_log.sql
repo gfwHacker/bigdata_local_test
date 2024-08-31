@@ -1,14 +1,10 @@
 INSERT INTO hive.hive.rn_ufw_log_hive
 SELECT
-    `@timestamp` AS `timestamp`,
-    CONVERT_TZ(
-            DATE_FORMAT(
-                    TO_TIMESTAMP(`@timestamp`, 'yyyy-MM-dd''T''HH:mm:ss.SSS''Z'''),
-                    'yyyy-MM-dd HH:mm:ss'),
-            'UTC', 'Asia/Shanghai') AS trans_time,
+    `@timestamp`                    AS message_ts,
     `@metadata`.`beat`              AS metadata_beat,
     `@metadata`.`type`              AS metadata_type,
     `@metadata`.`version`           AS metadata_version,
+    fields.`log_topic`              AS fields_log_topic,
     input.`type`                    AS input_type,
     agent.`id`                      AS agent_id,
     agent.`name`                    AS agent_name,
@@ -18,6 +14,7 @@ SELECT
     ecs.`version`                   AS ecs_version,
     host.`id`                       AS host_id,
     host.`containerized`            AS host_containerized,
+    host.`name`                     AS host_hostname,
     host.`ip`                       AS host_ip,
     host.`mac`                      AS host_mac,
     host.`hostname`                 AS host_hostname,

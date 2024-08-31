@@ -2,10 +2,11 @@ DROP TABLE IF EXISTS hive.flink.rn_ufw_log_kafka;
 CREATE TABLE IF NOT EXISTS hive.flink.rn_ufw_log_kafka (
     `@timestamp` STRING,
     `@metadata` ROW<beat STRING, type STRING, version STRING>,
+    fields ROW<log_topic STRING>,
     input ROW<type STRING>,
     agent ROW<id STRING, name STRING, type STRING, version STRING, ephemeral_id STRING>,
     ecs ROW<version STRING>,
-    host ROW<id STRING, containerized BOOLEAN, ip ARRAY<STRING>, mac ARRAY<STRING>, hostname STRING, architecture STRING,
+    host ROW<id STRING, containerized BOOLEAN, name STRING, ip ARRAY<STRING>, mac ARRAY<STRING>, hostname STRING, architecture STRING,
             os ROW<version STRING, family STRING, name STRING, kernel STRING, codename STRING, type STRING, platform STRING>
             >,
     log ROW<`offset` INT, file ROW<device_id STRING, inode STRING, path STRING>>,
@@ -23,11 +24,11 @@ CREATE TABLE IF NOT EXISTS hive.flink.rn_ufw_log_kafka (
 
 DROP TABLE IF EXISTS hive.hive.rn_ufw_log_hive;
 CREATE TABLE IF NOT EXISTS hive.hive.rn_ufw_log_hive (
-    `timestamp`          STRING        COMMENT '原始时间戳',
-    `trans_time`         STRING        COMMENT '格式化时间',
+    `message_ts`          STRING       COMMENT '原始时间戳',
     `metadata_beat`      STRING        COMMENT '元数据的beat信息',
     `metadata_type`      STRING        COMMENT '元数据类型',
     `metadata_version`   STRING        COMMENT '元数据版本',
+    `fields_log_topic`   STRING        COMMENT '目标topic',
     `input_type`         STRING        COMMENT '输入类型',
     `agent_id`           STRING        COMMENT '代理的ID',
     `agent_name`         STRING        COMMENT '代理的名称',
@@ -37,6 +38,7 @@ CREATE TABLE IF NOT EXISTS hive.hive.rn_ufw_log_hive (
     `ecs_version`        STRING        COMMENT 'ECS版本',
     `host_id`            STRING        COMMENT '主机ID',
     `host_containerized` BOOLEAN       COMMENT '是否容器化',
+    `host_name`          STRING        COMMENT '主机名称',
     `host_ip`            ARRAY<STRING> COMMENT '主机IP地址',
     `host_mac`           ARRAY<STRING> COMMENT '主机MAC地址',
     `host_hostname`      STRING        COMMENT '主机名称',
