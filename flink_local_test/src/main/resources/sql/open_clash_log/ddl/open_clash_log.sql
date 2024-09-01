@@ -30,13 +30,13 @@ CREATE TABLE hive.flink.open_clash_log_mysql (
     access_day     STRING COMMENT '请求时间，格式为 yyyyMMdd',
     req_time       STRING COMMENT '原始请求时间，格式为 yyyy-MM-dd HH:mm:ss',
     log_level      STRING COMMENT '日志级别',
-    proto          STRING COMMENT '协议类型从消息中提取',
+    proto          STRING COMMENT '协议类型',
     src_address    STRING COMMENT '发起IP地址',
     src_port       STRING COMMENT '发起端口',
     dst_address    STRING COMMENT '请求IP地址',
     dst_port       STRING COMMENT '请求端口',
     rule_set       STRING COMMENT '使用的规则集',
-    node_name      STRING COMMENT '节点名称或采取的操作类',
+    node_name      STRING COMMENT '使用的节点名称',
     access_status  INT    COMMENT '访问状态：1 表示成功，0 表示失败'
 ) WITH (
       'connector' = 'jdbc',
