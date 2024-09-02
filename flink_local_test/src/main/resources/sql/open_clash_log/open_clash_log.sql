@@ -1,17 +1,18 @@
 CREATE TEMPORARY VIEW hive.flink.open_clash_log_view AS
-SELECT SUBSTRING(message, 7, 19)                         AS req_time
-     , SPLIT_INDEX(SPLIT_INDEX(message, ' ', 1), '=', 1) AS log_level
-     , SPLIT_INDEX(SPLIT_INDEX(message, ' ', 2), '=', 1) AS msg
+SELECT CONVERT_TZ(
+        DATE_FORMAT(
+                TO_TIMESTAMP(SUBSTRING(message, 7, 19), 'yyyy-MM-dd''T''HH:mm:ss'),
+                'yyyy-MM-dd HH:mm:ss'),
+        'UTC', 'Asia/Shanghai')                                                     AS req_time
+     , SPLIT_INDEX(SPLIT_INDEX(message, ' ', 1), '=', 1)                            AS log_level
+     , SPLIT_INDEX(SPLIT_INDEX(message, ' ', 2), '=', 1)                            AS msg
      , `message`
 FROM hive.flink.open_clash_log_kafka;
 
 INSERT INTO hive.flink.open_clash_log_mysql
-SELECT DATE_FORMAT(
-        TO_TIMESTAMP(req_time, 'yyyyMMdd-HH:mm:ss'), 'yyyyMMddHHmm') AS `access_minutes` --请求时间分钟
-     , DATE_FORMAT(
-        TO_TIMESTAMP(req_time, 'yyyyMMdd-HH:mm:ss'), 'yyyyMMddHH')   AS `access_hour`    --请求时间小时
-     , DATE_FORMAT(
-        TO_TIMESTAMP(req_time, 'yyyyMMdd-HH:mm:ss'), 'yyyyMMdd')     AS `access_day`     --请求时间天
+SELECT DATE_FORMAT(req_time, 'yyyyMMddHHmm') AS `access_minutes` --请求时间分钟
+     , DATE_FORMAT(req_time, 'yyyyMMddHH')   AS `access_hour` --请求时间分钟
+     , DATE_FORMAT(req_time, 'yyyyMMdd')     AS `access_day` --请求时间分钟
      , req_time
      , log_level
      , proto
@@ -23,9 +24,7 @@ SELECT DATE_FORMAT(
      , node_name
      , access_status
 FROM (
-         SELECT DATE_FORMAT(
-                 TO_TIMESTAMP(req_time, 'yyyy-MM-dd''T''HH:mm:ss'),
-                 'yyyy-MM-dd HH:mm:ss')                                                   AS req_time
+         SELECT req_time
               , log_level                                                                 AS log_level
               , SUBSTRING(msg, 3, 3)                                                      AS proto
               , SPLIT_INDEX(SPLIT_INDEX(message, ' ', 3), ':', 0)                         AS src_address
@@ -58,9 +57,7 @@ FROM (
 
          UNION ALL
 
-         SELECT DATE_FORMAT(
-                 TO_TIMESTAMP(req_time, 'yyyy-MM-dd''T''HH:mm:ss'),
-                 'yyyy-MM-dd HH:mm:ss')                                                   AS req_time
+         SELECT req_time
               , log_level                                                                 AS log_level
               , SUBSTRING(msg, 3, 3)                                                      AS proto
               , SPLIT_INDEX(SPLIT_INDEX(message, ' ', 7), ':', 0)                         AS src_address
