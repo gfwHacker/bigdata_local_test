@@ -63,9 +63,7 @@ public class SparkSql_CRUD extends SparkSqlBase implements Serializable {
     public SparkConf getSparkSqlConf() {
         // 添加更多SparkSql配置
         SparkConf addSparkConf = SparkSqlBase.getInitSparkConf();
-        addSparkConf.setMaster("local[2]").setAppName("SparkSql_CRUD")
-                .set("spark.eventLog.dir", "spark_local_test/local_data/eventLog")
-                .set("spark.sql.warehouse.dir", "spark_local_test/local_data/warehouse");
+        addSparkConf.setMaster("local[2]").setAppName("SparkSql_CRUD");
         return addSparkConf;
     }
 }

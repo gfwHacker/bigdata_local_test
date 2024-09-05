@@ -48,9 +48,7 @@ public class SparkSqlExcScript extends SparkSqlBase implements Serializable {
     public SparkConf getSparkSqlConf() {
         // 添加更多SparkSql配置
         SparkConf addSparkConf = SparkSqlBase.getInitSparkConf();
-        addSparkConf.setMaster("local[2]").setAppName("SparkSqlExcScript")
-                .set("spark.eventLog.dir", "spark_local_test/local_data/eventLog")
-                .set("spark.sql.warehouse.dir", "spark_local_test/local_data/warehouse");
+        addSparkConf.setMaster("local[2]").setAppName("SparkSqlExcScript");
         return addSparkConf;
     }
 

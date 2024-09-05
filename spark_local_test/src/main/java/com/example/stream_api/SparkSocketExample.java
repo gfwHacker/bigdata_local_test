@@ -12,10 +12,10 @@ import scala.Tuple2;
 import java.io.Serializable;
 import java.util.Arrays;
 
-public class SparkStreamExample extends SparkStreamBase implements Serializable {
+public class SparkSocketExample extends SparkStreamBase implements Serializable {
 
     public static void main(String[] args) {
-        SparkStreamExample main = new SparkStreamExample();
+        SparkSocketExample main = new SparkSocketExample();
         main.process(args);
     }
 
@@ -27,7 +27,7 @@ public class SparkStreamExample extends SparkStreamBase implements Serializable 
         // 将接收到的文本行分割成单词
         JavaDStream<String> words = lines.flatMap(x -> Arrays.asList(x.split(" ")).iterator());
 
-        // 将单词映射为键值对（单词，1）
+        // 将单词映射为键值对（word,num）
         JavaPairDStream<String, Integer> pairs = words.mapToPair(s -> new Tuple2<>(s, 1));
 
         // 根据单词进行分组，并计算每个单词的频次
@@ -41,9 +41,7 @@ public class SparkStreamExample extends SparkStreamBase implements Serializable 
     public SparkConf getSparkStreamConf() {
         // 新增 SparkStream 配置
         SparkConf addSparkConf = SparkSqlBase.getInitSparkConf();
-        addSparkConf.setMaster("local[2]").setAppName("SparkStreamExample")
-                .set("spark.eventLog.dir", "spark_local_test/local_data/eventLog")
-                .set("spark.sql.warehouse.dir", "spark_local_test/local_data/warehouse");
+        addSparkConf.setMaster("local[2]").setAppName("SparkStreamExample");
         return addSparkConf;
     }
 }

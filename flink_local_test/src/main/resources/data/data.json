@@ -1,374 +1,122 @@
 [
   {
-    "person_id": 1,
-    "name": "张三",
-    "age": 30,
-    "address": {
-      "street": "中山路123号",
-      "city": "上海",
-      "state": "上海",
-      "zip": "200000",
-      "country": "中国"
-    },
-    "contact": {
-      "email": "zhangsan@example.com",
-      "phone": "+86 138 1234 5678",
-      "social_media": {
-        "facebook": "https://www.facebook.com/zhangsan",
-        "twitter": "https://twitter.com/zhangsan",
-        "linkedin": "https://www.linkedin.com/in/zhangsan"
-      }
-    },
-    "education": {
-      "degree": "学士",
-      "major": "计算机科学",
-      "university": "某某大学",
-      "graduation_year": 2015
-    },
-    "work_experience": {
-      "company": "某某公司",
-      "position": "软件工程师",
-      "start_date": "2015-06-01",
-      "end_date": "2022-01-31",
-      "responsibilities": [
-        "为产品X开发新功能",
-        "优化后端系统性能",
-        "与跨职能团队合作"
-      ]
-    },
-    "skills": {
-      "programming_languages": ["Java", "Apache Flink"],
-      "technologies": ["沟通能力", "解决问题", "团队合作"]
-    }
-  },
-  {
-    "person_id": 2,
-    "name": "李四",
+    "id": 1,
+    "name": "张伟",
     "age": 28,
-    "address": {
-      "street": "人民路456号",
-      "city": "北京",
-      "state": "北京",
-      "zip": "100000",
-      "country": "中国"
-    },
-    "contact": {
-      "email": "lisi@example.com",
-      "phone": "+86 139 5678 1234",
-      "social_media": {
-        "facebook": "https://www.facebook.com/lisi",
-        "twitter": "https://twitter.com/lisi",
-        "linkedin": "https://www.linkedin.com/in/lisi"
-      }
-    },
-    "education": {
-      "degree": "硕士",
-      "major": "数据科学",
-      "university": "某某大学",
-      "graduation_year": 2017
-    },
-    "work_experience": {
-      "company": "某某公司",
-      "position": "数据分析师",
-      "start_date": "2016-09-01",
-      "end_date": "2023-03-15",
-      "responsibilities": [
-        "分析客户数据",
-        "制定数据策略",
-        "协助团队实现数据驱动"
-      ]
-    },
-    "skills": {
-      "programming_languages": ["Python", "Spark"],
-      "technologies": ["逻辑思维", "数据分析", "沟通能力"]
-    }
+    "email": "zhangwei@example.com",
+    "signup_date": "2024-01-15",
+    "address": "北京市朝阳区",
+    "phone_number": "13800138000",
+    "gender": "男",
+    "occupation": "软件工程师",
+    "nationality": "中国"
   },
   {
-    "person_id": 3,
-    "name": "王五",
-    "age": 35,
-    "address": {
-      "street": "华中路789号",
-      "city": "广州",
-      "state": "广东",
-      "zip": "300000",
-      "country": "中国"
-    },
-    "contact": {
-      "email": "wangwu@example.com",
-      "phone": "+86 136 7890 2345",
-      "social_media": {
-        "facebook": "https://www.facebook.com/wangwu",
-        "twitter": "https://twitter.com/wangwu",
-        "linkedin": "https://www.linkedin.com/in/wangwu"
-      }
-    },
-    "education": {
-      "degree": "博士",
-      "major": "人工智能",
-      "university": "某某大学",
-      "graduation_year": 2014
-    },
-    "work_experience": {
-      "company": "某某公司",
-      "position": "机器学习工程师",
-      "start_date": "2014-03-01",
-      "end_date": "2021-12-31",
-      "responsibilities": [
-        "设计并实现机器学习模型",
-        "优化算法性能",
-        "与团队协作解决挑战"
-      ]
-    },
-    "skills": {
-      "programming_languages": ["Python", "TensorFlow"],
-      "technologies": ["创新思维", "问题解决", "团队合作"]
-    }
-  },
-  {
-    "person_id": 4,
-    "name": "赵六",
-    "age": 32,
-    "address": {
-      "street": "东风路321号",
-      "city": "深圳",
-      "state": "广东",
-      "zip": "518000",
-      "country": "中国"
-    },
-    "contact": {
-      "email": "zhaoliu@example.com",
-      "phone": "+86 138 3456 7890",
-      "social_media": {
-        "facebook": "https://www.facebook.com/zhaoliu",
-        "twitter": "https://twitter.com/zhaoliu",
-        "linkedin": "https://www.linkedin.com/in/zhaoliu"
-      }
-    },
-    "education": {
-      "degree": "硕士",
-      "major": "软件工程",
-      "university": "某某大学",
-      "graduation_year": 2013
-    },
-    "work_experience": {
-      "company": "某某公司",
-      "position": "高级软件工程师",
-      "start_date": "2013-07-01",
-      "end_date": "2022-06-30",
-      "responsibilities": [
-        "设计系统架构",
-        "开发核心模块",
-        "负责团队代码审查"
-      ]
-    },
-    "skills": {
-      "programming_languages": ["Java", "Spring Boot"],
-      "technologies": ["问题解决能力", "团队合作", "沟通能力"]
-    }
-  },
-  {
-    "person_id": 5,
-    "name": "钱七",
-    "age": 29,
-    "address": {
-      "street": "西藏路987号",
-      "city": "成都",
-      "state": "四川",
-      "zip": "610000",
-      "country": "中国"
-    },
-    "contact": {
-      "email": "qianqi@example.com",
-      "phone": "+86 139 2345 6789",
-      "social_media": {
-        "facebook": "https://www.facebook.com/qianqi",
-        "twitter": "https://twitter.com/qianqi",
-        "linkedin": "https://www.linkedin.com/in/qianqi"
-      }
-    },
-    "education": {
-      "degree": "本科",
-      "major": "信息技术",
-      "university": "某某大学",
-      "graduation_year": 2016
-    },
-    "work_experience": {
-      "company": "某某公司",
-      "position": "系统管理员",
-      "start_date": "2016-09-01",
-      "end_date": "2023-08-15",
-      "responsibilities": [
-        "管理服务器及网络设备",
-        "维护系统安全性",
-        "协助用户问题解决"
-      ]
-    },
-    "skills": {
-      "programming_languages": ["Linux", "Networking"],
-      "technologies": ["技术支持", "解决问题", "沟通能力"]
-    }
-  },
-  {
-    "person_id": 6,
-    "name": "周八",
-    "age": 31,
-    "address": {
-      "street": "南京路654号",
-      "city": "南京",
-      "state": "江苏",
-      "zip": "210000",
-      "country": "中国"
-    },
-    "contact": {
-      "email": "zhoub@example.com",
-      "phone": "+86 137 4567 8901",
-      "social_media": {
-        "facebook": "https://www.facebook.com/zhoub",
-        "twitter": "https://twitter.com/zhoub",
-        "linkedin": "https://www.linkedin.com/in/zhoub"
-      }
-    },
-    "education": {
-      "degree": "硕士",
-      "major": "计算机科学",
-      "university": "某某大学",
-      "graduation_year": 2014
-    },
-    "work_experience": {
-      "company": "某某公司",
-      "position": "数据库管理员",
-      "start_date": "2015-01-01",
-      "end_date": "2022-12-31",
-      "responsibilities": [
-        "设计数据库结构",
-        "优化查询性能",
-        "制定备份策略"
-      ]
-    },
-    "skills": {
-      "programming_languages": ["SQL", "MySQL"],
-      "technologies": ["问题解决", "团队合作", "适应能力"]
-    }
-  },
-  {
-    "person_id": 7,
-    "name": "吴九",
-    "age": 27,
-    "address": {
-      "street": "长江路1234号",
-      "city": "武汉",
-      "state": "湖北",
-      "zip": "430000",
-      "country": "中国"
-    },
-    "contact": {
-      "email": "wuj@example.com",
-      "phone": "+86 138 6789 0123",
-      "social_media": {
-        "facebook": "https://www.facebook.com/wuj",
-        "twitter": "https://twitter.com/wuj",
-        "linkedin": "https://www.linkedin.com/in/wuj"
-      }
-    },
-    "education": {
-      "degree": "本科",
-      "major": "电子商务",
-      "university": "某某大学",
-      "graduation_year": 2018
-    },
-    "work_experience": {
-      "company": "某某公司",
-      "position": "电商运营专员",
-      "start_date": "2019-03-01",
-      "end_date": "2024-02-28",
-      "responsibilities": [
-        "制定营销策略",
-        "管理线上商城",
-        "处理客户投诉"
-      ]
-    },
-    "skills": {
-      "programming_languages": ["Excel", "SEO"],
-      "technologies": ["沟通能力", "数据分析", "团队合作"]
-    }
-  },
-  {
-    "person_id": 8,
-    "name": "孙十",
+    "id": 2,
+    "name": "李娜",
     "age": 34,
-    "address": {
-      "street": "河西路5678号",
-      "city": "天津",
-      "state": "天津",
-      "zip": "300000",
-      "country": "中国"
-    },
-    "contact": {
-      "email": "sunsh@example.com",
-      "phone": "+86 137 8901 2345",
-      "social_media": {
-        "facebook": "https://www.facebook.com/sunsh",
-        "twitter": "https://twitter.com/sunsh",
-        "linkedin": "https://www.linkedin.com/in/sunsh"
-      }
-    },
-    "education": {
-      "degree": "硕士",
-      "major": "金融学",
-      "university": "某某大学",
-      "graduation_year": 2013
-    },
-    "work_experience": {
-      "company": "某某公司",
-      "position": "金融分析师",
-      "start_date": "2013-07-01",
-      "end_date": "2022-06-30",
-      "responsibilities": [
-        "分析市场数据",
-        "制定投资策略",
-        "撰写投资报告"
-      ]
-    },
-    "skills": {
-      "programming_languages": ["R", "Excel"],
-      "technologies": ["数据分析", "逻辑思维", "解决问题"]
-    }
+    "email": "lina@example.com",
+    "signup_date": "2024-02-20",
+    "address": "上海市浦东新区",
+    "phone_number": "13900139000",
+    "gender": "女",
+    "occupation": "医生",
+    "nationality": "中国"
   },
   {
-    "person_id": 9,
-    "name": "周华健",
-    "age": 33,
-    "address": {
-      "street": "西藏北路876号",
-      "city": "重庆",
-      "state": "重庆",
-      "zip": "400000",
-      "country": "中国"
-    },
-    "contact": {
-      "email": "zhouhj@example.com",
-      "phone": "+86 136 7890 1234",
-      "social_media": {
-        "facebook": "https://www.facebook.com/zhouhj",
-        "twitter": "https://twitter.com/zhouhj",
-        "linkedin": "https://www.linkedin.com/in/zhouhj"
-      }
-    },
-    "education": {
-      "degree": "硕士",
-      "major": "市场营销",
-      "university": "某某大学",
-      "graduation_year": 2014
-    },
-    "work_experience": {
-      "company": "某某公司",
-      "position": "市场营销经理",
-      "start_date": "2014-03-01",
-      "end_date": "2021-12-31",
-      "responsibilities": [
-        "制定"
-      ]
-    }
+    "id": 3,
+    "name": "王刚",
+    "age": 45,
+    "email": "wanggang@example.com",
+    "signup_date": "2024-03-10",
+    "address": "广州市天河区",
+    "phone_number": "13700137000",
+    "gender": "男",
+    "occupation": "教师",
+    "nationality": "中国"
+  },
+  {
+    "id": 4,
+    "name": "赵敏",
+    "age": 29,
+    "email": "zhaomin@example.com",
+    "signup_date": "2024-04-05",
+    "address": "深圳市福田区",
+    "phone_number": "13600136000",
+    "gender": "女",
+    "occupation": "护士",
+    "nationality": "中国"
+  },
+  {
+    "id": 5,
+    "name": "刘洋",
+    "age": 31,
+    "email": "liuyang@example.com",
+    "signup_date": "2024-05-25",
+    "address": "杭州市西湖区",
+    "phone_number": "13500135000",
+    "gender": "男",
+    "occupation": "设计师",
+    "nationality": "中国"
+  },
+  {
+    "id": 6,
+    "name": "陈静",
+    "age": 40,
+    "email": "chenjing@example.com",
+    "signup_date": "2024-06-15",
+    "address": "武汉市洪山区",
+    "phone_number": "13400134000",
+    "gender": "女",
+    "occupation": "记者",
+    "nationality": "中国"
+  },
+  {
+    "id": 7,
+    "name": "杨杰",
+    "age": 37,
+    "email": "yangjie@example.com",
+    "signup_date": "2024-07-10",
+    "address": "重庆市渝中区",
+    "phone_number": "13300133000",
+    "gender": "男",
+    "occupation": "律师",
+    "nationality": "中国"
+  },
+  {
+    "id": 8,
+    "name": "黄萍",
+    "age": 26,
+    "email": "huangping@example.com",
+    "signup_date": "2024-08-30",
+    "address": "成都市锦江区",
+    "phone_number": "13200132000",
+    "gender": "女",
+    "occupation": "销售员",
+    "nationality": "中国"
+  },
+  {
+    "id": 9,
+    "name": "周军",
+    "age": 50,
+    "email": "zhoujun@example.com",
+    "signup_date": "2024-09-20",
+    "address": "西安市碑林区",
+    "phone_number": "13100131000",
+    "gender": "男",
+    "occupation": "经理",
+    "nationality": "中国"
+  },
+  {
+    "id": 10,
+    "name": "吴丽",
+    "age": 32,
+    "email": "wuli@example.com",
+    "signup_date": "2024-10-10",
+    "address": "沈阳市和平区",
+    "phone_number": "13000130000",
+    "gender": "女",
+    "occupation": "会计",
+    "nationality": "中国"
   }
 ]

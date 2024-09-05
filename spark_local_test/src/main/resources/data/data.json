@@ -1,42 +1,122 @@
-{
-  "person_id": 1,
-  "name": "张三",
-  "age": 30,
-  "address": {
-    "street": "中山路123号",
-    "city": "上海",
-    "state": "上海",
-    "zip": "200000",
-    "country": "中国"
+[
+  {
+    "id": 1,
+    "name": "张伟",
+    "age": 28,
+    "email": "zhangwei@example.com",
+    "signup_date": "2024-01-15",
+    "address": "北京市朝阳区",
+    "phone_number": "13800138000",
+    "gender": "男",
+    "occupation": "软件工程师",
+    "nationality": "中国"
   },
-  "contact": {
-    "email": "zhangsan@example.com",
-    "phone": "+86 138 1234 5678",
-    "social_media": {
-      "facebook": "https://www.facebook.com/zhangsan",
-      "twitter": "https://twitter.com/zhangsan",
-      "linkedin": "https://www.linkedin.com/in/zhangsan"
-    }
+  {
+    "id": 2,
+    "name": "李娜",
+    "age": 34,
+    "email": "lina@example.com",
+    "signup_date": "2024-02-20",
+    "address": "上海市浦东新区",
+    "phone_number": "13900139000",
+    "gender": "女",
+    "occupation": "医生",
+    "nationality": "中国"
   },
-  "education": {
-    "degree": "学士",
-    "major": "计算机科学",
-    "university": "某某大学",
-    "graduation_year": 2015
+  {
+    "id": 3,
+    "name": "王刚",
+    "age": 45,
+    "email": "wanggang@example.com",
+    "signup_date": "2024-03-10",
+    "address": "广州市天河区",
+    "phone_number": "13700137000",
+    "gender": "男",
+    "occupation": "教师",
+    "nationality": "中国"
   },
-  "work_experience": {
-    "company": "某某公司",
-    "position": "软件工程师",
-    "start_date": "2015-06-01",
-    "end_date": "2022-01-31",
-    "responsibilities": [
-      "为产品X开发新功能",
-      "优化后端系统性能",
-      "与跨职能团队合作"
-    ]
+  {
+    "id": 4,
+    "name": "赵敏",
+    "age": 29,
+    "email": "zhaomin@example.com",
+    "signup_date": "2024-04-05",
+    "address": "深圳市福田区",
+    "phone_number": "13600136000",
+    "gender": "女",
+    "occupation": "护士",
+    "nationality": "中国"
   },
-  "skills": {
-    "programming_languages": ["Java", "Apache Flink"],
-    "technologies": ["沟通能力", "解决问题", "团队合作"]
+  {
+    "id": 5,
+    "name": "刘洋",
+    "age": 31,
+    "email": "liuyang@example.com",
+    "signup_date": "2024-05-25",
+    "address": "杭州市西湖区",
+    "phone_number": "13500135000",
+    "gender": "男",
+    "occupation": "设计师",
+    "nationality": "中国"
+  },
+  {
+    "id": 6,
+    "name": "陈静",
+    "age": 40,
+    "email": "chenjing@example.com",
+    "signup_date": "2024-06-15",
+    "address": "武汉市洪山区",
+    "phone_number": "13400134000",
+    "gender": "女",
+    "occupation": "记者",
+    "nationality": "中国"
+  },
+  {
+    "id": 7,
+    "name": "杨杰",
+    "age": 37,
+    "email": "yangjie@example.com",
+    "signup_date": "2024-07-10",
+    "address": "重庆市渝中区",
+    "phone_number": "13300133000",
+    "gender": "男",
+    "occupation": "律师",
+    "nationality": "中国"
+  },
+  {
+    "id": 8,
+    "name": "黄萍",
+    "age": 26,
+    "email": "huangping@example.com",
+    "signup_date": "2024-08-30",
+    "address": "成都市锦江区",
+    "phone_number": "13200132000",
+    "gender": "女",
+    "occupation": "销售员",
+    "nationality": "中国"
+  },
+  {
+    "id": 9,
+    "name": "周军",
+    "age": 50,
+    "email": "zhoujun@example.com",
+    "signup_date": "2024-09-20",
+    "address": "西安市碑林区",
+    "phone_number": "13100131000",
+    "gender": "男",
+    "occupation": "经理",
+    "nationality": "中国"
+  },
+  {
+    "id": 10,
+    "name": "吴丽",
+    "age": 32,
+    "email": "wuli@example.com",
+    "signup_date": "2024-10-10",
+    "address": "沈阳市和平区",
+    "phone_number": "13000130000",
+    "gender": "女",
+    "occupation": "会计",
+    "nationality": "中国"
   }
-}
+]
