@@ -22,7 +22,7 @@ public class SparkSqlExcScript extends SparkSqlBase implements Serializable {
     public void action(SparkSession spark, String cycle) {
 
         // 指定目录路径数组
-        String[] directoryPaths = {"sql/code_datagen"};
+        String[] directoryPaths = {"sql/code_datagen", "sql/query"};
 
         // 使用类加载器获取目录下的所有文件
         String[] filePathArray = findSQLFiles(directoryPaths);
