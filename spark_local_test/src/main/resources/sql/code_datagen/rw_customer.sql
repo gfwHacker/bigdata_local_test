@@ -13,7 +13,6 @@
 -- STORED AS TEXTFILE
 
 -- spark创建hive表语法
--- DROP TABLE IF EXISTS spark.code_datagen_customer_hive;
 -- CREATE TABLE IF NOT EXISTS spark.code_datagen_customer_hive (
 --     `id`              INT,
 --     `name`            STRING,

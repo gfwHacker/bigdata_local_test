@@ -27,21 +27,9 @@
 	      <name>dfs.permissions.enabled</name>
 	      <value>false</value>
   	</property>
-	
-    <!-- 本地文件系统上的路径，NameNode 在其中永久存储命名空间和事务日志。 -->
-    <property>
-        <name>dfs.namenode.name.dir</name>
-        <value>/opt/hadoop-3.2.4/data/nn</value>
-    </property>
     <!-- HDFS 块大小为 256MB（268435456），适用于大型文件系统。 -->
     <property>
         <name>dfs.blocksize</name>
         <value>16777216</value>
-    </property>
-	
-    <!-- 逗号分隔的本地文件系统上的路径列表，DataNode应该在其中存储其块。 -->
-    <property>
-        <name>dfs.datanode.data.dir</name>
-        <value>/opt/hadoop-3.2.4/data/dn</value>
     </property>
 </configuration>

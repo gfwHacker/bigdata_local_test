@@ -57,6 +57,12 @@ CREATE TABLE IF NOT EXISTS hive.hive.rn_ufw_log_hive (
     `message`            STRING        COMMENT '日志消息'
 ) WITH (
       'connector' = 'hive',
+      'sink.rolling-policy.file-size' = '16MB',
+      'sink.rolling-policy.rollover-interval' = '30min',
+      'sink.rolling-policy.check-interval' = '1min',
+      'auto-compaction' = 'true',
+      'compaction.file-size' = '4MB',
+    -- 数据完整时才感知到分区，但是没有 watermark，或者无法从分区字段的值中提取时间
       'sink.partition-commit.trigger' = 'process-time',
       'sink.partition-commit.delay' = '60s',
       'sink.partition-commit.policy.kind' = 'metastore, success-file'
