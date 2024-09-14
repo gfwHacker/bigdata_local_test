@@ -26,10 +26,13 @@ CREATE TABLE IF NOT EXISTS hive.hive.code_datagen_customer_hive (
     `email`           STRING,
     `order_id`        STRING,
     `products_name`   STRING,
-    `products_price`  DOUBLE
-) WITH (
+    `products_price`  DOUBLE,
+    `pt_h`            STRING
+)
+    PARTITIONED BY (`pt_h`)
+    WITH (
      'connector' = 'hive',
      'sink.partition-commit.trigger'='process-time',
-     'sink.partition-commit.delay'='1m',
-     'sink.partition-commit.policy.kind'='metastore，success-file'
+     'sink.partition-commit.delay'='0s',
+     'sink.partition-commit.policy.kind'='metastore,success-file'
      );

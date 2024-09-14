@@ -54,16 +54,19 @@ CREATE TABLE IF NOT EXISTS hive.hive.rn_ufw_log_hive (
     `log_file_device_id` STRING        COMMENT '日志文件设备ID',
     `log_file_inode`     STRING        COMMENT '日志文件inode',
     `log_file_path`      STRING        COMMENT '日志文件路径',
-    `message`            STRING        COMMENT '日志消息'
-) WITH (
+    `message`            STRING        COMMENT '日志消息',
+    `pt_h`               STRING        COMMENT '分区字段小时'
+)
+    PARTITIONED BY (`pt_h`)
+    WITH (
       'connector' = 'hive',
       'sink.rolling-policy.file-size' = '16MB',
       'sink.rolling-policy.rollover-interval' = '30min',
       'sink.rolling-policy.check-interval' = '1min',
       'auto-compaction' = 'true',
-      'compaction.file-size' = '4MB',
+      'compaction.file-size' = '1MB',
     -- 数据完整时才感知到分区，但是没有 watermark，或者无法从分区字段的值中提取时间
       'sink.partition-commit.trigger' = 'process-time',
       'sink.partition-commit.delay' = '60s',
-      'sink.partition-commit.policy.kind' = 'metastore, success-file'
+      'sink.partition-commit.policy.kind' = 'metastore,success-file'
       );

@@ -38,5 +38,13 @@ CREATE TABLE IF NOT EXISTS iceberg.spark.code_datagen_customer_iceberg (
 ) USING iceberg;
 
 -- spark插入iceberg表
-INSERT INTO iceberg.spark.code_datagen_customer_iceberg
-SELECT * FROM hive.code_datagen_customer_hive;
+INSERT OVERWRITE iceberg.spark.code_datagen_customer_iceberg
+SELECT id
+     , name
+     , address
+     , phone
+     , email
+     , order_id
+     , products_name
+     , products_price
+FROM hive.code_datagen_customer_hive;
