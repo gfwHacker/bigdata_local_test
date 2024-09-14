@@ -1,11 +1,11 @@
 CREATE VIEW hive.flink.open_clash_log_view AS
-    SELECT CONVERT_TZ(
-            DATE_FORMAT(TO_TIMESTAMP(SUBSTRING(message, 7, 19), 'yyyy-MM-dd''T''HH:mm:ss'), 'yyyy-MM-dd HH:mm:ss'),
-            'UTC', 'Asia/Shanghai')                          AS req_time
-         , SPLIT_INDEX(SPLIT_INDEX(message, ' ', 1), '=', 1) AS log_level
-         , SPLIT_INDEX(SPLIT_INDEX(message, ' ', 2), '=', 1) AS msg
-         , `message`                                         AS message
-    FROM hive.flink.open_clash_log_kafka
+SELECT CONVERT_TZ(
+        DATE_FORMAT(TO_TIMESTAMP(SUBSTRING(message, 7, 19), 'yyyy-MM-dd''T''HH:mm:ss'), 'yyyy-MM-dd HH:mm:ss'), 'UTC',
+        'Asia/Shanghai')                                 AS req_time
+     , SPLIT_INDEX(SPLIT_INDEX(message, ' ', 1), '=', 1) AS log_level
+     , SPLIT_INDEX(SPLIT_INDEX(message, ' ', 2), '=', 1) AS msg
+     , `message`                                         AS message
+FROM hive.flink.open_clash_log_kafka
 ;
 
 INSERT INTO hive.flink.open_clash_log_mysql
@@ -32,22 +32,17 @@ FROM (
               , CASE
                     WHEN SUBSTRING(SPLIT_INDEX(message, ' ', 7), 1, 7) = 'RuleSet'
                         THEN REGEXP_EXTRACT(SPLIT_INDEX(message, ' ', 7), '\((.*?)\)', 1)
-                    WHEN SUBSTRING(SPLIT_INDEX(message, ' ', 7), 1, 6) = 'Domain'
-                        THEN 'DIRECT'
-                    WHEN SUBSTRING(SPLIT_INDEX(message, ' ', 7), 1, 11) = 'ProcessName'
-                        THEN 'DIRECT'
-                    WHEN SUBSTRING(SPLIT_INDEX(message, ' ', 7), 1, 12) = 'DomainSuffix'
-                        THEN 'DIRECT'
-                    WHEN SUBSTRING(SPLIT_INDEX(message, ' ', 7), 1, 13) = 'DomainKeyword'
-                        THEN 'Optimize'
+                    WHEN SUBSTRING(SPLIT_INDEX(message, ' ', 7), 1, 6) = 'Domain' THEN 'DIRECT'
+                    WHEN SUBSTRING(SPLIT_INDEX(message, ' ', 7), 1, 11) = 'ProcessName' THEN 'DIRECT'
+                    WHEN SUBSTRING(SPLIT_INDEX(message, ' ', 7), 1, 12) = 'DomainSuffix' THEN 'DIRECT'
+                    WHEN SUBSTRING(SPLIT_INDEX(message, ' ', 7), 1, 13) = 'DomainKeyword' THEN 'Optimize'
                     ELSE 'Match' END                              AS rule_set
               , CASE
                     WHEN SUBSTRING(SPLIT_INDEX(message, ' ', 9), 1, 5) = 'PROXY'
                         THEN REGEXP_EXTRACT(SPLIT_INDEX(message, ' ', 9), '\[(.*?)\]', 1)
                     WHEN SUBSTRING(SPLIT_INDEX(message, ' ', 9), 1, 8) = 'Optimize'
                         THEN REGEXP_EXTRACT(SPLIT_INDEX(message, ' ', 9), '\[(.*?)\]', 1)
-                    WHEN SUBSTRING(SPLIT_INDEX(message, ' ', 9), 1, 6) = 'REJECT'
-                        THEN 'REJECT'
+                    WHEN SUBSTRING(SPLIT_INDEX(message, ' ', 9), 1, 6) = 'REJECT' THEN 'REJECT'
                     ELSE 'DIRECT' END                             AS node_name
               , 1                                                 AS access_status
          FROM hive.flink.open_clash_log_view

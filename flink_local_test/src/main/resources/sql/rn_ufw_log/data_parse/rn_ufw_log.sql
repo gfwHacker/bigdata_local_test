@@ -10,33 +10,27 @@ SELECT DATE_FORMAT(ufw_time_str, 'yyyyMMddHHmm')                       AS `ufw_m
      , CAST(SPLIT_INDEX(SPLIT_INDEX(message, ' ', 3), '=', 1) AS INT)  AS `len`         --数据包长度
      , CAST(SPLIT_INDEX(SPLIT_INDEX(message, ' ', 6), '=', 1) AS INT)  AS `ttl`         --存活时间
      , CAST(SPLIT_INDEX(SPLIT_INDEX(message, ' ', 11), '=', 1) AS INT) AS `window`      --窗口大小
-     , DATE_FORMAT(LOCALTIMESTAMP, 'yyyyMMddHH')                       AS  `pt_h`
+     , DATE_FORMAT(LOCALTIMESTAMP, 'yyyyMMddHH')                       AS `pt_h`
 FROM (
-         SELECT CONCAT(
-                 '2024-',
-                 CASE SUBSTRING(TRIM(SPLIT_INDEX(message, 'rnvps', 0)), 1, 3)
-                     WHEN 'Jan' THEN '01'
-                     WHEN 'Feb' THEN '02'
-                     WHEN 'Mar' THEN '03'
-                     WHEN 'Apr' THEN '04'
-                     WHEN 'May' THEN '05'
-                     WHEN 'Jun' THEN '06'
-                     WHEN 'Jul' THEN '07'
-                     WHEN 'Aug' THEN '08'
-                     WHEN 'Sep' THEN '09'
-                     WHEN 'Oct' THEN '10'
-                     WHEN 'Nov' THEN '11'
-                     WHEN 'Dec' THEN '12'
-                     END, '-',
-                 CASE SUBSTRING(TRIM(SPLIT_INDEX(message, 'rnvps', 0)), 5, 1)
-                     WHEN ' ' THEN LPAD(SUBSTRING(TRIM(SPLIT_INDEX(message, 'rnvps', 0)), 6, 1), 2, '0')
-                     ELSE SUBSTRING(TRIM(SPLIT_INDEX(message, 'rnvps', 0)), 5, 2)
-                     END, ' ',
-                 CASE SUBSTRING(TRIM(SPLIT_INDEX(message, 'rnvps', 0)), 5, 1)
-                     WHEN ' ' THEN SPLIT_INDEX(TRIM(SPLIT_INDEX(message, 'rnvps', 0)), ' ', 3)
-                     ELSE SPLIT_INDEX(TRIM(SPLIT_INDEX(message, 'rnvps', 0)), ' ', 2)
-                     END
-                )                                     AS `ufw_time_str`
-              , TRIM(SPLIT_INDEX(message, 'OUT=', 1)) AS `message`
+         SELECT CONCAT('2024-', CASE SUBSTRING(TRIM(SPLIT_INDEX(message, 'rnvps', 0)), 1, 3)
+                                    WHEN 'Jan' THEN '01'
+                                    WHEN 'Feb' THEN '02'
+                                    WHEN 'Mar' THEN '03'
+                                    WHEN 'Apr' THEN '04'
+                                    WHEN 'May' THEN '05'
+                                    WHEN 'Jun' THEN '06'
+                                    WHEN 'Jul' THEN '07'
+                                    WHEN 'Aug' THEN '08'
+                                    WHEN 'Sep' THEN '09'
+                                    WHEN 'Oct' THEN '10'
+                                    WHEN 'Nov' THEN '11'
+                                    WHEN 'Dec' THEN '12' END, '-',
+                       CASE SUBSTRING(TRIM(SPLIT_INDEX(message, 'rnvps', 0)), 5, 1)
+                           WHEN ' ' THEN LPAD(SUBSTRING(TRIM(SPLIT_INDEX(message, 'rnvps', 0)), 6, 1), 2, '0')
+                           ELSE SUBSTRING(TRIM(SPLIT_INDEX(message, 'rnvps', 0)), 5, 2) END, ' ',
+                       CASE SUBSTRING(TRIM(SPLIT_INDEX(message, 'rnvps', 0)), 5, 1)
+                           WHEN ' ' THEN SPLIT_INDEX(TRIM(SPLIT_INDEX(message, 'rnvps', 0)), ' ', 3)
+                           ELSE SPLIT_INDEX(TRIM(SPLIT_INDEX(message, 'rnvps', 0)), ' ', 2) END) AS `ufw_time_str`
+              , TRIM(SPLIT_INDEX(message, 'OUT=', 1))                                            AS `message`
          FROM hive.flink.rn_ufw_log_kafka
      );
