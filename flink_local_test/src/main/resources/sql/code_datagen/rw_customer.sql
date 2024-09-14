@@ -25,7 +25,7 @@ SELECT id
      -- 解析products ARRAY<ROW<name STRING, price DOUBLE>>
      , products_name
      , products_price
-     , DATE_FORMAT(CAST(CURRENT_TIMESTAMP AS TIMESTAMP), 'yyyyMMddHH')
+     , DATE_FORMAT(LOCALTIMESTAMP, 'yyyyMMddHH')
 FROM hive.flink.view1
          CROSS JOIN UNNEST(emails) AS t1 (email)
          CROSS JOIN UNNEST(products) AS t6 (products_name, products_price);

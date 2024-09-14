@@ -1,4 +1,4 @@
-INSERT INTO hive.flink.rn_ufw_log_mysql
+INSERT INTO hive.hive.rn_ufw_log_hive
 SELECT DATE_FORMAT(ufw_time_str, 'yyyyMMddHHmm')                       AS `ufw_minutes` --ufw时间
      , DATE_FORMAT(ufw_time_str, 'yyyyMMddHH')                         AS `ufw_hour`    --ufw时间
      , DATE_FORMAT(ufw_time_str, 'yyyyMMdd')                           AS `ufw_day`     --ufw时间
@@ -10,6 +10,7 @@ SELECT DATE_FORMAT(ufw_time_str, 'yyyyMMddHHmm')                       AS `ufw_m
      , CAST(SPLIT_INDEX(SPLIT_INDEX(message, ' ', 3), '=', 1) AS INT)  AS `len`         --数据包长度
      , CAST(SPLIT_INDEX(SPLIT_INDEX(message, ' ', 6), '=', 1) AS INT)  AS `ttl`         --存活时间
      , CAST(SPLIT_INDEX(SPLIT_INDEX(message, ' ', 11), '=', 1) AS INT) AS `window`      --窗口大小
+     , DATE_FORMAT(LOCALTIMESTAMP, 'yyyyMMddHH')                       AS  `pt_h`
 FROM (
          SELECT CONCAT(
                  '2024-',
@@ -37,9 +38,5 @@ FROM (
                      END
                 )                                     AS `ufw_time_str`
               , TRIM(SPLIT_INDEX(message, 'OUT=', 1)) AS `message`
-         FROM hive.hive.rn_ufw_log_hive
-         /*+ OPTIONS('streaming-source.enable'='true','streaming-source.partition.include'='all',
-          'streaming-source.monitor-interval'='1s','streaming-source.partition-order'='create-time') */
-     )
-WHERE SPLIT_INDEX(message, ' ', 8) <> 'DF'
-  AND SPLIT_INDEX(SPLIT_INDEX(message, ' ', 11), '=', 0) <> 'LEN';
+         FROM hive.flink.rn_ufw_log_kafka
+     );

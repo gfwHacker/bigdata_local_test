@@ -13,5 +13,5 @@ CREATE TABLE hive_sync.rn_ufw_log_mysql (
     `len`         INT                            COMMENT '数据包长度',
     `ttl`         INT                            COMMENT '存活时间',
     `window`      INT                            COMMENT '窗口大小',
-    INDEX idx_ufw_minutes (`ufw_minutes`)
+    INDEX idx_ufw_minutes (`ufw_minutes` ASC)
 ) ENGINE=InnoDB;

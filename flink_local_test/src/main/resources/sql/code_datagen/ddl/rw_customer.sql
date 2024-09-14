@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS hive.flink.code_datagen_customer_kafka (
       'connector' = 'kafka',
       'topic' = 'code_datagen_customer',
       'properties.bootstrap.servers' = '192.168.2.101:9092',
-      'properties.group.id' = 'customer_group1',
+      'properties.group.id' = 'customer_group',
       'scan.startup.mode' = 'earliest-offset', -- latest-offset
       'format' = 'json',
       'json.fail-on-missing-field' = 'false',
@@ -28,11 +28,10 @@ CREATE TABLE IF NOT EXISTS hive.hive.code_datagen_customer_hive (
     `products_name`   STRING,
     `products_price`  DOUBLE,
     `pt_h`            STRING
-)
-    PARTITIONED BY (`pt_h`)
-    WITH (
-     'connector' = 'hive',
-     'sink.partition-commit.trigger'='process-time',
-     'sink.partition-commit.delay'='0s',
-     'sink.partition-commit.policy.kind'='metastore,success-file'
-     );
+) PARTITIONED BY (`pt_h`)
+  WITH (
+      'connector' = 'hive',
+      'sink.partition-commit.trigger'='process-time',
+      'sink.partition-commit.delay'='0s',
+      'sink.partition-commit.policy.kind'='metastore,success-file'
+   );

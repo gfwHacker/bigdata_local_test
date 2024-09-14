@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS hive.flink.rn_ufw_log_kafka;
-CREATE TABLE IF NOT EXISTS hive.flink.rn_ufw_log_kafka (
+DROP TABLE IF EXISTS hive.flink.filebeat_parse_kafka;
+CREATE TABLE IF NOT EXISTS hive.flink.filebeat_parse_kafka (
     `@timestamp` STRING,
     `@metadata` ROW<beat STRING, type STRING, version STRING>,
     fields ROW<log_topic STRING>,
@@ -16,14 +16,14 @@ CREATE TABLE IF NOT EXISTS hive.flink.rn_ufw_log_kafka (
       'topic' = 'rn_ufw_log',
       'properties.bootstrap.servers' = '192.168.2.101:9092',
       'scan.startup.mode' = 'earliest-offset', -- latest-offset
-      'properties.group.id' = 'rn_ufw_log_group',
+      'properties.group.id' = 'filebeat_parse_group',
       'format' = 'json',
       'json.fail-on-missing-field' = 'false',
       'json.ignore-parse-errors' = 'true'
       );
 
-DROP TABLE IF EXISTS hive.hive.rn_ufw_log_hive;
-CREATE TABLE IF NOT EXISTS hive.hive.rn_ufw_log_hive (
+DROP TABLE IF EXISTS hive.hive.filebeat_parse_hive;
+CREATE TABLE IF NOT EXISTS hive.hive.filebeat_parse_hive (
     `message_ts`          STRING       COMMENT '原始时间戳',
     `metadata_beat`      STRING        COMMENT '元数据的beat信息',
     `metadata_type`      STRING        COMMENT '元数据类型',
@@ -60,12 +60,10 @@ CREATE TABLE IF NOT EXISTS hive.hive.rn_ufw_log_hive (
     PARTITIONED BY (`pt_h`)
     WITH (
       'connector' = 'hive',
-      'sink.rolling-policy.file-size' = '16MB',
-      'sink.rolling-policy.rollover-interval' = '30min',
-      'sink.rolling-policy.check-interval' = '1min',
+      -- 开启小文件合并
       'auto-compaction' = 'true',
       'compaction.file-size' = '1MB',
-    -- 数据完整时才感知到分区，但是没有 watermark，或者无法从分区字段的值中提取时间
+      -- 数据完整时才感知到分区，但是没有watermark，或者无法从分区字段的值中提取时间
       'sink.partition-commit.trigger' = 'process-time',
       'sink.partition-commit.delay' = '60s',
       'sink.partition-commit.policy.kind' = 'metastore,success-file'

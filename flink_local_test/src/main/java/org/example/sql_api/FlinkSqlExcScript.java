@@ -21,9 +21,10 @@ public class FlinkSqlExcScript extends FlinkStreamBase implements Serializable {
     @Override
     public void action(StreamTableEnvironment tableEnv) {
 
-        // 指定目录路径数组
-        String[] directoryPaths = {"sql/code_datagen/ddl", "sql/rn_ufw_log/ddl",
-                "sql/data_sync/ddl", "sql/open_clash_log/ddl"};
+        // 指定建表语句所在目录的路径
+        String[] directoryPaths = {"sql/code_datagen/ddl", "sql/filebeat_parse/ddl", "sql/open_clash_log/ddl",
+                "sql/rn_ufw_log/data_parse/ddl", "sql/rn_ufw_log/data_sync/ddl"};
+//        String[] directoryPaths = {"sql/code_datagen"};
 
         // 使用类加载器获取目录下的所有文件
         String[] filePathArray = findSQLFiles(directoryPaths);
