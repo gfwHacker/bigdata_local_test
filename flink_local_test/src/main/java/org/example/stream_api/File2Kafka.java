@@ -31,12 +31,7 @@ public class File2Kafka {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(conf);
 
         // 定义文件路径数组，这些文件将被导入到Kafka
-        String[] filePaths = {
-                "D:\\DataImport\\kafka_data\\mg_bench1.csv"
-                ,"D:\\DataImport\\kafka_data\\mg_bench2.csv"
-                ,"D:\\DataImport\\kafka_data\\mg_bench3.csv"
-                // Add more file paths as needed
-        };
+        String[] filePaths = {"D:\\Install\\DataImport\\kafka_data\\mg_bench1.csv"};
 
         // 遍历文件路径数组，为每个文件创建一个数据流，并将其导入到对应的Kafka主题
         for (int i = 0; i < filePaths.length; i++) {
