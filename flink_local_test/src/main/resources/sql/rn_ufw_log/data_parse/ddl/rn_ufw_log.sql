@@ -35,13 +35,13 @@ CREATE TABLE IF NOT EXISTS hive.hive.rn_ufw_log_hive (
     `window`      INT    COMMENT '窗口大小',
     `pt_h`            STRING
 ) PARTITIONED BY (`pt_h`)
-  WITH (
-      'connector' = 'hive',
-      -- 开启小文件合并
-      'auto-compaction' = 'true',
-      'compaction.file-size' = '1MB',
-      -- 数据完整时才感知到分区，但是没有watermark，或者无法从分区字段的值中提取时间
-      'sink.partition-commit.trigger' = 'process-time',
-      'sink.partition-commit.delay' = '60s',
-      'sink.partition-commit.policy.kind' = 'metastore,success-file'
-      );
+    WITH (
+        'connector' = 'hive',
+        -- 开启小文件合并
+        'auto-compaction' = 'true',
+        'compaction.file-size' = '1MB',
+        -- 数据完整时才感知到分区，但是没有watermark，或者无法从分区字段的值中提取时间
+        'sink.partition-commit.trigger' = 'process-time',
+        'sink.partition-commit.delay' = '60s',
+        'sink.partition-commit.policy.kind' = 'metastore,success-file'
+        );
